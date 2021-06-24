@@ -1,4 +1,4 @@
-import React , {useState, useEffect} from 'react'
+import React , {useState, useEffect, useCallback} from 'react'
 import axios from 'axios';
 import { useHistory, useParams } from 'react-router-dom';
 
@@ -24,20 +24,24 @@ import { useHistory, useParams } from 'react-router-dom';
     //      console.log(e.target.value);
     //      setUser();
     //  }
-    useEffect(() => {
-        loadUser();
-    });
-    const loadUser = async () => {
+    
+    const loadUser = useCallback(async () => {
         console.log(params);
         const result = await axios.get(`http://localhost:4000/users/${params.id}`);
         console.log(result.data)
+        console.log(result.data.phone)
         setName(result.data.name);
         setUname(result.data.username);
         setEmail(result.data.email);
         setPhoneNo(result.data.phone);
         setWeb(result.data.website);
+        console.log(phoneNo);
         // console.log(result.data);
-    }
+    }, [params]);
+
+    useEffect(() => {
+        loadUser();
+    }, [loadUser]);
 
     const onFormSubmission = async(e) => {
         e.preventDefault();
