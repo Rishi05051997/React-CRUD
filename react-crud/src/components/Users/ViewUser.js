@@ -21,7 +21,7 @@ export default function ViewUser() {
 
     useEffect(() => {
         loaduser();
-    }, [])
+    })
 
     const loaduser = async () => {
         const result = await axios.get(`http://localhost:4000/users/${id}`)

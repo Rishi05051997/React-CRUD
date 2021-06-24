@@ -20,7 +20,7 @@
     "start": "react-scripts start",
     "json-server": "json-server -p 4000 --watch db.json",
     "start-dev": "concurrently \"npm start\" \"npm run json-server\"",
-    "build": "react-scripts build",
+    "build": " concurrently \"react-scripts build\" \"npm run json-server\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
