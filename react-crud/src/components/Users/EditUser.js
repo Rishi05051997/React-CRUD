@@ -37,7 +37,7 @@ import { useHistory, useParams } from 'react-router-dom';
         setWeb(result.data.website);
         console.log(phoneNo);
         // console.log(result.data);
-    }, [params]);
+    }, [phoneNo, params])
 
     useEffect(() => {
         loadUser();
